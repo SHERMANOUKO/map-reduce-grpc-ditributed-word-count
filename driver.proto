@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package driverPackage;
+
+service Driver {
+    rpc startDriver(processData) returns (status);
+}
+
+message empty {}
+
+message status {
+    int32 code = 1;
+}
+
+message processData {
+    string filesDirectory = 1;
+    int32 noOfReducers = 2;
+    int32 noOfMappers = 3;
+    string ports = 4;
+}

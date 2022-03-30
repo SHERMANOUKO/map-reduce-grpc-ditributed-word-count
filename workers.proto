@@ -1,0 +1,31 @@
+
+syntax = "proto3";
+
+package workerPackage;
+
+service Worker {
+    rpc setDriverPort(driverPort) returns (status);
+    rpc map(mapMetadata) returns (status);
+    rpc reduce(reducerMetadata) returns (status);
+    rpc terminate(empty) returns (status);
+}
+
+message empty {}
+
+message reducerMetadata {
+    int32 id = 1;
+}
+
+message status {
+    int32 code = 1;
+}
+
+message mapMetadata {
+    string filePath = 1;
+    int32 mapID = 2;
+    int32 noOfReducers = 3;
+}
+
+message driverPort {
+    int32 port = 1;
+}
